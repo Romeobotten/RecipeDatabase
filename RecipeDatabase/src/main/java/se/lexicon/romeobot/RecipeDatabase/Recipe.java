@@ -12,7 +12,16 @@ public class Recipe {
     private int recipeId;
 
     private String recipeName;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            mappedBy = "recipe",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            orphanRemoval = true
+    )
     private List<RecipeIngredient> recipeIngredients;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "instruction_id", referencedColumnName = "instruction_id")
     private RecipeInstruction instruction;
     private List<RecipeCategory> categories;
 

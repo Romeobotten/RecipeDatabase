@@ -12,23 +12,23 @@ public class RecipeInstruction {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
     @Column(name = "instruction_id", unique = true)
-    String instuctionId;
+    String instructionId;
     String instructions;
 
     public RecipeInstruction() {
     }
 
-    public RecipeInstruction(String instuctionId, String instructions) {
-        this.instuctionId = instuctionId;
+    public RecipeInstruction(String instructionId, String instructions) {
+        this.instructionId = instructionId;
         this.instructions = instructions;
     }
 
-    public String getInstuctionId() {
-        return instuctionId;
+    public String getInstructionId() {
+        return instructionId;
     }
 
-    public void setInstuctionId(String instuctionId) {
-        this.instuctionId = instuctionId;
+    public void setInstructionId(String instructionId) {
+        this.instructionId = instructionId;
     }
 
     public String getInstructions() {
@@ -44,19 +44,19 @@ public class RecipeInstruction {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RecipeInstruction that = (RecipeInstruction) o;
-        return instuctionId.equals(that.instuctionId) &&
+        return instructionId.equals(that.instructionId) &&
                 Objects.equals(instructions, that.instructions);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(instuctionId, instructions);
+        return Objects.hash(instructionId, instructions);
     }
 
     @Override
     public String toString() {
         return "RecipeInstruction{" +
-                "instuctionId='" + instuctionId + '\'' +
+                "instructionId='" + instructionId + '\'' +
                 ", instructions='" + instructions + '\'' +
                 '}';
     }

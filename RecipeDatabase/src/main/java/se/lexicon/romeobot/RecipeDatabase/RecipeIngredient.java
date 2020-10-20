@@ -14,9 +14,17 @@ public class RecipeIngredient {
     @Column(name = "recipe_ingredient_id", unique = true)
     private String recipeIngredientId;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "recipe_ingredient_id", referencedColumnName = "ingredient_id")
     private Ingredient ingredient;
     double amount;
     Measurement measurement;
+
+    @ManyToOne(
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "recipe_id")
     Recipe recipe;
 
     public RecipeIngredient() {

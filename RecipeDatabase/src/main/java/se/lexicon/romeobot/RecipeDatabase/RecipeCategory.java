@@ -11,6 +11,12 @@ public class RecipeCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
     private String category;
+
+    @OneToMany(fetch = FetchType.EAGER,
+            mappedBy = "recipeCategory",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
+            orphanRemoval = true
+    )
     private List<Recipe> recipes;
 
     public RecipeCategory() {
